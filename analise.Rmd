@@ -18,7 +18,7 @@ library(ggplot2)
 ```{r}
 setClass("timestamp")
 setAs("character","timestamp", function(from) as.POSIXct(from, format="%Y-%m-%dT%H:%M:%S"))
-dados <- read.csv(file="resultado.csv", header=TRUE, sep=",", colClasses = c("timestamp", "integer"))
+dados <- read.csv(file="put_1_1000.csv", header=TRUE, sep=",", colClasses = c("timestamp", "integer"))
 #colClasses = c("character", "factor", "integer", "numeric", "Date", "logical")))
 ```
 
