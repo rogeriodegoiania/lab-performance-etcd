@@ -1,7 +1,7 @@
 "use sctrict";
 
 const Etcd3 = require("etcd3").Etcd3;
-const cliente1 = new Etcd3();
+const cliente = new Etcd3();
 
 var chave = "chave1";
 if (process.argv[2]){
