@@ -9,7 +9,7 @@ if (process.argv[2]){
 }
 
 async function teste(){
-    var resposta = await cliente.get("chave" + i);
+    var resposta = await cliente.get(chave);
     console.log(resposta);
 }
 
