@@ -10,7 +10,6 @@ if (process.argv[2]){
 
 async function teste(){
     var resposta = await cliente.get(chave);
-    //.string()
     console.log(resposta);
 }
 

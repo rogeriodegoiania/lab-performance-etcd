@@ -8,7 +8,7 @@ module.exports = async function(quantidade){
         for(var i = 0; i < qtd; i++){
             let tempoInicio = new Date().getTime();
             try {
-                await cliente.put("chave" + i, "valor " + i);
+                await cliente.put("chave" + i).value("valor " + i);
             }
             catch (error) {
                 console.log(error);
