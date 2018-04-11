@@ -1,7 +1,7 @@
 "use sctrict";
 
 const cluster = require("cluster");
-const processaResultado = require("./lib/processaResultado");
+const salvarResultado = require("./lib/salvarResultado");
 
 var quantidadeTrabalhadores = 1;
 var contTrabalhadores = 0;
@@ -22,6 +22,8 @@ if (process.argv[4]){
     quantidadeAmostras = parseInt(process.argv[4].trim());
 }
 
+var nomeArquivo = testeModuloNome + "_" + quantidadeTrabalhadores + "_" + quantidadeAmostras;
+
 console.log(testeModuloNome, "quantidadeTrabalhadores:", quantidadeTrabalhadores, "quantidadeAmostras:",quantidadeAmostras);
 
 if (cluster.isMaster) {
@@ -41,7 +43,7 @@ if (cluster.isMaster) {
         resultadosGlobal = resultadosGlobal.concat(message);
         if (contTrabalhadores === 0) {
             console.log(resultadosGlobal.length);
-            processaResultado(resultadosGlobal);
+            salvarResultado(nomeArquivo, resultadosGlobal);
         }
         worker.kill();
     });

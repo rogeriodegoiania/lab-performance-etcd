@@ -1,0 +1,30 @@
+---
+title: "Lab - Etcd"
+author: "Rogerio Dias e Rodrigo"
+date: "10 de abril, 2018"
+output: 
+  html_document: 
+    highlight: pygments
+---
+
+```{r setup, include=FALSE}
+# NÃO ALTERE O CÓDIGO NESTE CAMPO
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+**Carrega os dados de CDC:**
+```{r}
+setClass("timestamp")
+setAs("character","timestamp", function(from) as.POSIXct(from, format="%Y-%m-%dT%H:%M:%S"))
+dados <- read.csv(file="resultado.csv", header=TRUE, sep=",", colClasses = c("timestamp", "integer"))
+#colClasses = c("character", "factor", "integer", "numeric", "Date", "logical")))
+```
+
+```{r}
+summary(dados$tempo.resposta)
+plot(x=dados$data, y=dados$tempo.resposta)
+#qplot(y = pdif, x = genero, data = cdc, geom = "boxplot")
+#qplot(x = data, fill = tempo.resposta, data = dados)
+```
