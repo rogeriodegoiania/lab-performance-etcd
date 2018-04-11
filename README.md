@@ -26,9 +26,6 @@ sudo apt-get install -y nodejs
 ./etcdctl cluster-health
 ```
 
-# Baixar ferramentas de teste
-https://github.com/coreos/etcd/archive/master.zip
-
 # Configuração do ambiente - executar comando dentro da pasta deste projeto
 ```
 npm install

@@ -19,11 +19,13 @@ library(ggplot2)
 setClass("timestamp")
 setAs("character","timestamp", function(from) as.POSIXct(from, format="%Y-%m-%dT%H:%M:%S"))
 dados <- read.csv(file="put_1_1000.csv", header=TRUE, sep=",", colClasses = c("timestamp", "integer"))
+dados_16 <- read.csv(file="put_16_1000.csv", header=TRUE, sep=",", colClasses = c("timestamp", "integer"))
 #colClasses = c("character", "factor", "integer", "numeric", "Date", "logical")))
 ```
 
 ```{r}
 summary(dados$tempo.resposta)
+summary(dados_16$tempo.resposta)
 plot(x=dados$data, y=dados$tempo.resposta)
 #qplot(y = pdif, x = genero, data = cdc, geom = "boxplot")
 #qplot(x = data, fill = tempo.resposta, data = dados)
