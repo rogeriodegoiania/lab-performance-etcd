@@ -49,7 +49,7 @@ if (cluster.isMaster) {
 else {
     process.on("message", function (msg) {
         async function executar(moduloNome, qtd) {
-            var testeModuloRef = require("./teste/" + moduloNome);
+            var testeModuloRef = require("./modulosTeste/" + moduloNome);
             if (testeModuloRef){
                 process.send(await testeModuloRef(qtd));
             }
