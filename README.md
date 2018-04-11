@@ -31,7 +31,7 @@ sudo apt-get install -y nodejs
 npm install
 ```
 
-#Copiar arquivo de resultado no servidor remoto para máquina local
+# Copiar arquivo de resultado no servidor remoto para máquina local
 ```
 sftp -P 3000 root@139.59.174.217:/root/lab-performance-etcd/put_1_1000.csv .
 ```
