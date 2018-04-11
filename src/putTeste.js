@@ -13,7 +13,7 @@ if (process.argv[3]){
 }
 
 async function teste(){
-    var resposta = await cliente.put(chave, valor);
+    var resposta = await cliente.put(chave).value(valor);
     console.log(resposta);
 }
 
