@@ -1,1 +1,1 @@
-node src/index.js put 1 1000
+node src/index.js put 1 1000 vda1

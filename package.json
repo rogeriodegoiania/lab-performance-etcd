@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "disk-stat": "^1.0.4",
     "etcd3": "^0.2.9"
   }
 }

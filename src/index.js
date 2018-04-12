@@ -2,6 +2,8 @@
 
 const cluster = require("cluster");
 const salvarResultado = require("./lib/salvarResultado");
+const config = require("./config");
+const infoDisco = require("./lib/infoDisco");
 
 var quantidadeTrabalhadores = 1;
 var contTrabalhadores = 0;
@@ -21,6 +23,9 @@ if (process.argv[3]){
 if (process.argv[4]){
     quantidadeAmostras = parseInt(process.argv[4].trim());
 }
+if (process.argv[5]){
+    config.dispositivoDiscoNome = process.argv[5].trim();
+}
 
 var nomeArquivo = testeModuloNome + "_" + quantidadeTrabalhadores + "_" + quantidadeAmostras;
 
@@ -28,6 +33,16 @@ console.log(testeModuloNome, "quantidadeTrabalhadores:", quantidadeTrabalhadores
 
 if (cluster.isMaster) {
     console.log("preparando workers...");
+    var tempoDiscoGravacaoInicio = 0;
+    var tempoDiscoLeituraInicio = 0;
+    var tempoDiscoGravacaoFim = 0;
+    var tempoDiscoLeituraFim = 0;
+    var dadosInfoDisco = infoDisco(config.dispositivoDiscoNome);
+    if (dadosInfoDisco){
+        tempoDiscoGravacaoInicio = dadosInfoDisco.msWriting;
+        tempoDiscoLeituraInicio = dadosInfoDisco.msReading;
+    }
+    
     for (var i = 0; i < quantidadeTrabalhadores; i++) {
         let worker = cluster.fork();
         contTrabalhadores++;
@@ -42,7 +57,16 @@ if (cluster.isMaster) {
         contTrabalhadores--;
         resultadosGlobal = resultadosGlobal.concat(message);
         if (contTrabalhadores === 0) {
-            console.log(resultadosGlobal.length);
+
+            var dadosInfoDisco = infoDisco(config.dispositivoDiscoNome);
+            if (dadosInfoDisco){
+                tempoDiscoGravacaoFim = dadosInfoDisco.msWriting;
+                tempoDiscoLeituraFim = dadosInfoDisco.msReading;
+            }
+
+            console.log("Latência gravação(ms): " + (tempoDiscoGravacaoFim - tempoDiscoGravacaoInicio));
+            console.log("Latência leitura(ms): " + (tempoDiscoGravacaoFim - tempoDiscoGravacaoInicio));
+
             salvarResultado(nomeArquivo, resultadosGlobal);
         }
         worker.kill();
