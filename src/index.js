@@ -65,7 +65,7 @@ if (cluster.isMaster) {
             }
 
             console.log("Latência gravação(ms): " + (tempoDiscoGravacaoFim - tempoDiscoGravacaoInicio));
-            console.log("Latência leitura(ms): " + (tempoDiscoGravacaoFim - tempoDiscoGravacaoInicio));
+            console.log("Latência leitura(ms): " + (tempoDiscoLeituraFim - tempoDiscoLeituraInicio));
 
             salvarResultado(nomeArquivo, resultadosGlobal);
         }

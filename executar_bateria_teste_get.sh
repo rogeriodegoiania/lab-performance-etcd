@@ -1,1 +1,1 @@
-node src/index.js get 1 1000 vda1
+node src/index.js get 1 10000 vda1
