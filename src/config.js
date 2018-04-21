@@ -1,3 +1,4 @@
 module.exports = {
-    dispositivoDiscoNome:"sda"
+    dispositivoDiscoNome:"sda",
+    etcd: { hosts: '139.59.174.217:2379'}
 }

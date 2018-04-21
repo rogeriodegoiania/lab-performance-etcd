@@ -35,3 +35,11 @@ npm install
 ```
 sftp -P 3000 root@139.59.174.217:/root/lab-performance-etcd/put_1_1000.csv .
 ```
+
+# Configuração de script - arquivo src/config.js
+```
+module.exports = {
+    dispositivoDiscoNome:"sda",
+    etcd: { hosts: '139.59.174.217:2379'}
+}
+```
